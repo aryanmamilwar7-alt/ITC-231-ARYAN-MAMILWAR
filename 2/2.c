@@ -1,91 +1,91 @@
-#include <stdio.h>
-#define MAX 10
-
-int top = -1;
-int S[MAX];
-
+#include<stdio.h>
+int max=10;
+int top=-1;
+int s[10];
 void push();
 void pop();
 void palindrome();
-void overunderflow();
+void overunder();
 void display();
-
-int main() {
-    int ch;
-    printf("Enter Choice:\n");
-    printf("1 - To push element\n");
-    printf("2 - To pop element\n");
-    printf("3 - To check palindrome\n");
-    printf("4 - To check underflow and overflow condition\n");
-    printf("5 - To display stack\n");
-    scanf("%d", &ch);
-
-    switch (ch) {
-        case 1: push(); break;
-        case 2: pop(); break;
-        case 3: palindrome(); break;
-        case 4: overunderflow(); break;
-        case 5: display(); break;
-        default: printf("Invalid choice\n"); break;
+int main(){
+    int i , n;
+    do{
+    printf("1.for push \n 2.for pop \n 3.for pali \n 4.for overunder \n 5.for display ");
+    scanf ("%d",&n);
+    switch (n)
+    {
+    case 1:
+        printf("\n your choice is push ");
+        push(s);
+        break;
+    case 2:
+        printf (" your choice is pop ");
+        pop();
+        break;
+    case 3:
+        printf(" your choice is pali");
+        palindrome(max);
+        break;
+    case 4:
+        printf(" your choice is overunder");
+        overunder(max);
+        break; 
+    case 5:
+         printf(" your choice is display "); 
+         display(max,s);  
+         break;  
+    case 0:
+        printf("exiting the program");
+        exit(0);
+    default:
+        break;
     }
+}while(1);
     return 0;
 }
-
-void push() {
+void push(int s[max]){
     int ele;
-    if (top == MAX - 1) {
-        printf("Stack Overflow\n");
-    } else {
-        printf("Enter element: ");
-        scanf("%d", &ele);
+    printf(" \n Enter the element you want to push ");
+    scanf("%d",&ele);
+    if(top==max-1){
+        printf("stack is overflow ");
+    }else{
         top++;
-        S[top] = ele;
+        s[top]=ele;
     }
 }
-
-void pop() {
-    if (top == -1) {
-        printf("Stack Underflow\n");
-    } else {
-        printf("Popped element: %d\n", S[top]);
+void pop(){
+    if(top==-1){
+        printf("stack is underflow ");
+    }else{
         top--;
     }
 }
-
-void palindrome() {
-    if (top == -1) {
-        printf("Stack is empty\n");
-        return;
-    }
-
+void palindrome(int max){
     int i;
-    for (i = 0; i <= top / 2; i++) {
-        if (S[i] != S[top - i]) {
-            printf("Stack is Not Palindrome\n");
-            return;
+    for(i=0;i<max/2;i++){
+        if(s[i]=!s[max-1-i]){
+            printf("stack is not palindrome ");
+            break;
+        }else{
+            while(i=4){
+                printf("stack is palidrome ");
+            }continue;
         }
     }
-    printf("Stack is Palindrome\n");
 }
-
-void overunderflow() {
-    if (top == -1)
-        printf("Stack is Underflow (Empty)\n");
-    else if (top == MAX - 1)
-        printf("Stack is Overflow (Full)\n");
-    else
-        printf("Stack is neither Overflow nor Underflow\n");
+void overunder(int max){
+    if(top==-1){
+        printf("stack is underflow ");
+    }else if(top==max-1){
+        printf("stack is overflow ");
+    }else{
+        printf("stack is neither overflow nor underflow ");
+    }
 }
-
-void display() {
-    if (top == -1) {
-        printf("Stack is empty\n");
-        return;
+void display(int max , int s[max]){
+    int i;
+    for(i=0;i<max;i++){
+        printf("%d  ",s[i]);
     }
-
-    printf("Stack elements are:\n");
-    for (int i = 0; i <= top; i++) {
-        printf("%d ", S[i]);
-    }
-    printf("\n");
 }
